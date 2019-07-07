@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 
-import { DataType, ActionType } from '../../pages';
+import { DataType, ActionType, ReducerActionType } from '../../pages';
 import { CustomzieInput } from '../index';
 import { Footer } from './footer';
 
@@ -22,11 +22,11 @@ type ListType = keyof typeof DataList;
 
 interface CustomizeModalProps {
   isOpen: boolean,
-  toggle: any,
-  dispatch: any,
+  toggle: () => void,
+  dispatch: React.Dispatch<ReducerActionType>,
   selectItem?: number,
   dataList: DataType[],
-  setSelectItem: any,
+  setSelectItem: React.Dispatch<React.SetStateAction<number>>,
 }
 
 export const CustomizeModal = ({

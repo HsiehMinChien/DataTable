@@ -39,7 +39,7 @@ interface CustomzieInputType {
   warningString?: string;
   onBlur?: () => void;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  refs: any;
+  refs: React.MutableRefObject<any>;
   value: string;
   needFilled?: boolean;
 }
