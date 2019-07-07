@@ -1,0 +1,34 @@
+{
+  "name": "rakuten",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "Jeff",
+  "license": "ISC",
+  "dependencies": {
+    "@types/classnames": "^2.2.9",
+    "@types/next": "^8.0.5",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4",
+    "@types/reactstrap": "^8.0.1",
+    "@types/styled-components": "^4.1.16",
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-typescript": "^1.1.1",
+    "bootstrap": "^4.3.1",
+    "classnames": "^2.2.6",
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "reactstrap": "^8.0.0",
+    "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "prettier": "1.18.2"
+  }
+}
