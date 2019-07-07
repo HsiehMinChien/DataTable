@@ -24,7 +24,7 @@ interface CustomizeModalProps {
   isOpen: boolean,
   toggle: () => void,
   dispatch: React.Dispatch<ReducerActionType>,
-  selectItem?: number,
+  selectItem: number,
   dataList: DataType[],
   setSelectItem: React.Dispatch<React.SetStateAction<number>>,
 }
