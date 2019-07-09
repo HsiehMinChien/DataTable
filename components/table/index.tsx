@@ -40,7 +40,7 @@ export const DisplayTable = ({
   return (
     <Table>
       <thead>
-        <SytledTr color="#C9C9C9">
+        <SytledTr color="#ffffff">
           <th>No.</th>
           <th>Name</th>
           <th>Phone</th>

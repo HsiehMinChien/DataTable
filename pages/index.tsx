@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button } from 'reactstrap';
+import Container from '@material-ui/core/Container';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import { DisplayTable, CustomizeModal } from '../components';
+import { DisplayTable, CustomizeModal, FabButton } from '../components';
 
 const StyledH1 = styled.h1`
   margin: 15px 0px;
+  text-align: center;
 `;
 
 export enum ActionType {
@@ -59,7 +60,7 @@ const App = () => {
 
   const [dataList, dispatch] = React.useReducer(reducer, []);
   return (
-    <div>
+    <Container>
       <StyledH1>Data List Demo</StyledH1>
       {React.useMemo(() => (
         <DisplayTable
@@ -80,9 +81,9 @@ const App = () => {
         />
       ), [dataList, selectItem, isOpen])}
       {React.useMemo(() => {
-        return <Button color="primary" onClick={toggle}>Insert New Item</Button>
+        return <FabButton toggle={toggle} />
       }, [])}
-    </div>
+    </Container>
   );
 }
 

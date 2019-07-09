@@ -12,7 +12,9 @@
   "author": "Jeff",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.2.0",
     "@types/classnames": "^2.2.9",
+    "@types/material-ui": "^0.21.6",
     "@types/next": "^8.0.5",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
