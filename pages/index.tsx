@@ -81,7 +81,7 @@ const App = () => {
         />
       ), [dataList, selectItem, isOpen])}
       {React.useMemo(() => {
-        return <FabButton toggle={toggle} />
+        return <FabButton onClick={toggle} />
       }, [])}
     </Container>
   );
