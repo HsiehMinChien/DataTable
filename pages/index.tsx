@@ -51,24 +51,21 @@ const App = () => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    console.log('newValue', newValue)
     setValue(newValue);
   }
 
   return (
     <>
-      <AppBar position="static">
-        <Pagination page={value} onChangeCallback={handleChange}>
-          <LinkTab label="Data One" href="/drafts" />
-          <LinkTab label="Page Two" href="/trash" />
-          <LinkTab label="Page Three" href="/spam" />
-        </Pagination>
-      </AppBar>
+      <Pagination color="secondary" page={value} onChangeCallback={handleChange}>
+        <LinkTab label="Data One" href="/" />
+        <LinkTab label="To be implemented" href="/1" />
+        <LinkTab label="To be implemented 2" href="/2" />
+      </Pagination>
       {value === 0 && <TabContainer>
         <DataList />
       </TabContainer>}
-      {value === 1 && <TabContainer>Page Two</TabContainer>}
-      {value === 2 && <TabContainer>Page Three</TabContainer>}
+      {value === 1 && <TabContainer>To be implemented</TabContainer>}
+      {value === 2 && <TabContainer>To be implemented 2</TabContainer>}
     </>
   );
 }
