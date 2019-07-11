@@ -1,0 +1,14 @@
+button:focus {
+  outline: 0px;
+}
+
+.modal-dialog {
+  margin: 4.5rem 0.5rem;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    margin: 4.75rem auto;
+  }
+}
+
