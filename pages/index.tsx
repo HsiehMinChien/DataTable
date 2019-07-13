@@ -1,9 +1,8 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 
-import { Pagination } from '../components';
+import { Pagination, RingSpinner } from '../components';
 import DataList from './dataTable/index';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -64,7 +63,7 @@ const App = () => {
       {value === 0 && <TabContainer>
         <DataList />
       </TabContainer>}
-      {value === 1 && <TabContainer>To be implemented</TabContainer>}
+      {value === 1 && <TabContainer><RingSpinner /></TabContainer>}
       {value === 2 && <TabContainer>To be implemented 2</TabContainer>}
     </>
   );
