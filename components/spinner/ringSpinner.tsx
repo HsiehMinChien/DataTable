@@ -40,9 +40,15 @@ const StyledDiv = styled.div`
   }
 `;
 
+export interface SpinnerProps {
+  color?: string,
+  loadingContent?: string
+}
+
 export const RingSpinner = ({
-  color = '#cef'
-}: { color?: string }) => (
+  color = '#cef',
+  loadingContent = 'Loading...',
+}: SpinnerProps) => (
     <>
       <StyledDiv className="lds-ring" color={color}>
         <div></div>
@@ -50,6 +56,6 @@ export const RingSpinner = ({
         <div></div>
         <div></div>
       </StyledDiv>
-      <div>Loading...</div>
+      <div>{loadingContent}</div>
     </>
   )

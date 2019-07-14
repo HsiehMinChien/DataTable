@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import { SpinnerProps } from './ringSpinner';
 
 const ldsRipple = keyframes`
   0% {
@@ -38,13 +39,14 @@ const StyledDiv = styled.div`
 `;
 
 export const RippleSpinner = ({
-  color = '#cef'
-}: { color?: string }) => (
+  color = '#cef',
+  loadingContent = 'Loading...',
+}: SpinnerProps) => (
     <>
       <StyledDiv className="lds-ripple" color={color}>
         <div></div>
         <div></div>
       </StyledDiv>
-      <div>Loading...</div>
+      <div>{loadingContent}</div>
     </>
   )
