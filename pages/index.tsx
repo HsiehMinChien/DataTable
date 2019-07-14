@@ -2,7 +2,7 @@ import React from 'react';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 
-import { Pagination, RingSpinner } from '../components';
+import { Pagination, RingSpinner, RippleSpinner } from '../components';
 import DataList from './dataTable/index';
 
 import 'bootstrap/dist/css/bootstrap.css';
