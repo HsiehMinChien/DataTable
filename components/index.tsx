@@ -4,4 +4,7 @@ export * from './input';
 export * from './button';
 export * from './pagination';
 export * from './spinner';
+export * from './pages';
 export * from './useReducer';
+export * from './constant';
+export * from './utils';

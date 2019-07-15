@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import styled from 'styled-components';
 import { Label } from 'reactstrap';
 
-import { StyledSpan } from '../index';
+import { StyledSpan } from '..';
 
 const StyledLabel = styled(Label)`
   margin-top: 20px;

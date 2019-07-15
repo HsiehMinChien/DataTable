@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 import { DataType, ActionType, ReducerActionType } from '../../pages';
-import { CustomzieInput } from '../index';
+import { CustomzieInput } from '..';
 import { Footer } from './footer';
 
 const StyledModal = styled(Modal)`

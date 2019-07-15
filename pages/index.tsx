@@ -2,8 +2,7 @@ import React from 'react';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 
-import { Pagination, RingSpinner, RippleSpinner, dataListReducer } from '../components';
-import DataList from './dataTable/index';
+import { Pagination, dataListReducer, DataList, OmdbDemo } from '../components';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import '../components/style.css';
@@ -67,7 +66,7 @@ const App = () => {
           dispatch={dispatch}
         />
       </TabContainer>}
-      {value === 1 && <TabContainer><RingSpinner /></TabContainer>}
+      {value === 1 && <TabContainer><OmdbDemo /></TabContainer>}
       {value === 2 && <TabContainer>To be implemented 2</TabContainer>}
     </>
   );
