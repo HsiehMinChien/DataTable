@@ -2,54 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import Container from '@material-ui/core/Container';
 
-import { DisplayTable, CustomizeModal, FabButton } from '../../components';
+import { DisplayTable, CustomizeModal, FabButton, DataType, ReducerActionType } from '../../components';
 
 const StyledH1 = styled.h1`
   margin: 15px 0px;
   text-align: center;
 `;
 
-export enum ActionType {
-  insert = 'insert',
-  modify = 'modify',
-  delete = 'delete'
+interface DataListProps {
+  dataList: DataType[],
+  dispatch: React.Dispatch<ReducerActionType>
 }
 
-export interface DataType {
-  serial: number;
-  name: string;
-  phone: string;
-  email: string;
-}
-
-export interface ReducerActionType {
-  type: string,
-  payload: DataType,
-}
-
-const reducer = (dataList: DataType[], action: ReducerActionType) => {
-  const { type, payload } = action;
-  switch (type) {
-    case ActionType.insert:
-      if (Array.isArray(dataList)) {
-        if (dataList.length === 0) {
-          payload['serial'] = 1;
-        } else {
-          payload['serial'] = dataList[dataList.length - 1].serial + 1;
-        }
-      }
-      return [...dataList, payload];
-    case ActionType.modify:
-      const outputState = dataList.filter((item: DataType) => item.serial !== payload.serial);
-      return [...outputState, payload];
-    case ActionType.delete:
-      return dataList.filter((item: DataType) => item.name !== payload.name);
-    default:
-      return dataList;
-  }
-}
-
-const DataList = () => {
+const DataList = ({
+  dataList,
+  dispatch
+}: DataListProps) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const [selectItem, setSelectItem] = React.useState<number>(0);
 
@@ -57,7 +25,7 @@ const DataList = () => {
     setIsOpen(!isOpen);
   }
 
-  const [dataList, dispatch] = React.useReducer(reducer, []);
+
   return (
     <Container>
       <StyledH1>Data List Demo</StyledH1>

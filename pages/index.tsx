@@ -2,7 +2,7 @@ import React from 'react';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 
-import { Pagination, RingSpinner, RippleSpinner } from '../components';
+import { Pagination, RingSpinner, RippleSpinner, dataListReducer } from '../components';
 import DataList from './dataTable/index';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -48,6 +48,7 @@ function LinkTab(props: any) {
 
 const App = () => {
   const [value, setValue] = React.useState(0);
+  const [dataList, dispatch] = React.useReducer(dataListReducer, []);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
@@ -61,7 +62,10 @@ const App = () => {
         <LinkTab label="To be implemented 2" href="/2" />
       </Pagination>
       {value === 0 && <TabContainer>
-        <DataList />
+        <DataList
+          dataList={dataList}
+          dispatch={dispatch}
+        />
       </TabContainer>}
       {value === 1 && <TabContainer><RingSpinner /></TabContainer>}
       {value === 2 && <TabContainer>To be implemented 2</TabContainer>}
