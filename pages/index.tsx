@@ -2,7 +2,7 @@ import React from 'react';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 
-import { Pagination, dataListReducer, DataList, OmdbDemo } from '../components';
+import { BarPagination, dataListReducer, DataList, OmdbDemo } from '../components';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import '../components/style.css';
@@ -55,11 +55,11 @@ const App = () => {
 
   return (
     <>
-      <Pagination color="secondary" page={value} onChangeCallback={handleChange}>
+      <BarPagination color="primary" page={value} onChangeCallback={handleChange}>
         <LinkTab label="Data One" href="/" />
         <LinkTab label="To be implemented" href="/1" />
         <LinkTab label="To be implemented 2" href="/2" />
-      </Pagination>
+      </BarPagination>
       {value === 0 && <TabContainer>
         <DataList
           dataList={dataList}

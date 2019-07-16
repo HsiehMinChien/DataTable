@@ -3,7 +3,7 @@ import _ from 'lodash';
 import styled from 'styled-components';
 import Container from '@material-ui/core/Container';
 import { Button, Row, Col } from 'reactstrap';
-import { RippleSpinner, convertToOmdbApiURL, CustomzieInput } from '../..';
+import { RippleSpinner, convertToOmdbApiURL, CustomzieInput, ItemPagination } from '../..';
 
 enum InputType {
   title = 'title',
@@ -26,7 +26,7 @@ const StyledFlex = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin-right: 20px;
-  width: 160px;
+  width: 170px;
 `;
 
 const StyledRow = styled(Row)`
@@ -136,7 +136,8 @@ export const OmdbDemo = () => {
       return <div>
         {convertDataToDisplay()}
         <br />
-        <Button onClick={() => setIsTrigger(false)}>Back to Search</Button>
+        <ItemPagination data={data.Search} />
+        {/* <Button onClick={() => setIsTrigger(false)}>Back to Search</Button> */}
       </div>;
     } else {
       return <RippleSpinner />;
