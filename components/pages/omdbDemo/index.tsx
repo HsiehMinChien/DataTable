@@ -2,7 +2,11 @@ import React from 'react';
 import _ from 'lodash';
 import styled from 'styled-components';
 import Container from '@material-ui/core/Container';
-import { Button, Row, Col } from 'reactstrap';
+import { Button, Row } from 'reactstrap';
+import {
+  PaginationItem,
+  PaginationLink,
+} from 'reactstrap';
 import { RippleSpinner, convertToOmdbApiURL, CustomzieInput, ItemPagination } from '../..';
 
 enum InputType {
@@ -43,6 +47,33 @@ export const OmdbDemo = () => {
   const [data, setData] = React.useState<any>(null);
   const [isTrigger, setIsTrigger] = React.useState(false)
   const [isLoaded, setIsLoaded] = React.useState(true);
+
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const totalPages = _.isArray(_.get(data, 'Search', null)) ? Math.floor(data.Search.length / 12) + 1 : 0;
+
+  const handlePaginationClick = (i: number) => {
+    console.log(i)
+    setCurrentPage(i);
+  }
+
+  const createPaginationContent = () => {
+    let items: any = [];
+
+    for (let i = 1; i <= totalPages; i += 1) {
+      items.push(<PaginationItem
+        key={`${data}-${i}`}
+        active={i === currentPage}
+        onClick={() => handlePaginationClick(i)}
+      >
+        <PaginationLink href="">
+          {i}
+        </PaginationLink>
+      </PaginationItem>);
+    }
+
+    return items;
+  }
+
 
   const handleClick = () => {
     fetch(convertToOmdbApiURL(title, year, 'movie'))
@@ -136,7 +167,9 @@ export const OmdbDemo = () => {
       return <div>
         {convertDataToDisplay()}
         <br />
-        <ItemPagination data={data.Search} />
+        <ItemPagination handlePaginationClick={handlePaginationClick} currentPage={currentPage} totalPages={totalPages}>
+          {createPaginationContent()}
+        </ItemPagination>
         {/* <Button onClick={() => setIsTrigger(false)}>Back to Search</Button> */}
       </div>;
     } else {
