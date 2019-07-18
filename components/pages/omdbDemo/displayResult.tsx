@@ -44,8 +44,9 @@ const StyledCol = styled(Col)`
   }
 `;
 
-const StyledH2 = styled.h2`
+const StyledH1 = styled.h1`
   text-align: center;
+  padding: 50px 0px;
 `;
 
 const StyledH3 = styled.h3`
@@ -80,7 +81,7 @@ export const DisplayResult = ({
       !_.isNil(data) &&
       (_.get(data, 'Response', null) === 'False' || !_.isNil(_.get(data, 'Error', null)))
     ) {
-      return <div>Oops, something went wrong!</div>
+      return <StyledH1>Oops, something went wrong!</StyledH1>
     } else if (
       !_.isNil(data) &&
       _.get(data, 'Response', null) === 'True' &&
@@ -118,7 +119,6 @@ export const DisplayResult = ({
   }
 
   return !showDetail ? <div>
-    <StyledH2>Search Result</StyledH2>
     {convertDataToDisplay()}
     <br />
     <StyledRow className={classnames('pagination')} style={{ justifyContent: 'center' }}>
