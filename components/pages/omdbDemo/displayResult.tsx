@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import _ from 'lodash';
 import styled from 'styled-components';
 import {
@@ -14,12 +15,18 @@ const StyledFlex = styled.div`
   display: flex | inline-flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-right: 20px;
+  margin: 0px 16px;
   width: 170px;
 `;
 
 const StyledRow = styled(Row)`
   width: 150px;
+  &.pagination,
+  &.detail-button {
+    margin-top:20px;
+    width: 100%;
+    justify-content: center;
+  }
 `;
 
 const StyledImg = styled.img`
@@ -28,6 +35,26 @@ const StyledImg = styled.img`
   background-color: #eee;
   object-fit: cover;
   border: 0px;
+`;
+
+const StyledCol = styled(Col)`
+  padding: 20px;
+  &.center {
+    text-align: center;
+  }
+`;
+
+const StyledH2 = styled.h2`
+  text-align: center;
+`;
+
+const StyledH3 = styled.h3`
+  margin-bottom: 20px;
+`;
+
+const StyledH4 = styled.h4`
+  margin-bottom: 20px;
+  color: gray;
 `;
 
 interface DisplayResultProps {
@@ -67,9 +94,8 @@ export const DisplayResult = ({
             <StyledRow>{item.Title}</StyledRow>
           </div>
         </StyledFlex>
-      ))
+      )).filter((item: any, i: number) => (Math.floor(i / 12) + 1) === currentPage)
     }
-    console.log(data);
     return <div> unexpect status !</div>
   }
 
@@ -92,23 +118,36 @@ export const DisplayResult = ({
   }
 
   return !showDetail ? <div>
+    <StyledH2>Search Result</StyledH2>
     {convertDataToDisplay()}
     <br />
-    <ItemPagination handlePaginationClick={handlePaginationClick} currentPage={currentPage} totalPages={totalPages}>
-      {createPaginationContent()}
-    </ItemPagination>
-    {/* <Button onClick={() => setIsTrigger(false)}>Back to Search</Button> */}
-  </div> : <Row>
-      <Col xs={5}>
+    <StyledRow className={classnames('pagination')} style={{ justifyContent: 'center' }}>
+      <ItemPagination
+        handlePaginationClick={handlePaginationClick}
+        currentPage={currentPage}
+        totalPages={totalPages}>
+        {createPaginationContent()}
+      </ItemPagination>
+    </StyledRow>
+  </div > : <Row>
+      <StyledCol className={classnames('center')} xs={5}>
         <img src={showDetail.Poster} />
-      </Col>
-      <Col xs={7}>
-        <div>{`Title: ${showDetail.Title}`}</div>
-        <div>{`Type: ${showDetail.Type}`}</div>
-        <div>{`Year: ${showDetail.Year}`}</div>
-        <div>{`imdbID: ${showDetail.imdbID}`}</div>
-      </Col>
+      </StyledCol>
+      <StyledCol xs={7}>
+        <StyledH3>{`Title: ${showDetail.Title}`}</StyledH3>
+        <StyledH3>{`Type: ${showDetail.Type}`}</StyledH3>
+        <StyledH4>{`Year: ${showDetail.Year}`}</StyledH4>
+        <StyledH4>{`imdbID: ${showDetail.imdbID}`}</StyledH4>
+      </StyledCol>
       <br />
-      <Button onClick={() => setShowDetail(null)}>Back to Result List</Button>
+      <StyledRow className={classnames('detail-button')}>
+        <Button
+          outline
+          color="success"
+          onClick={() => setShowDetail(null)}
+        >
+          Back to Result List
+        </Button>
+      </StyledRow>
     </Row>;
 }

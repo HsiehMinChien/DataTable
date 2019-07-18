@@ -1,9 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
 import _ from 'lodash';
+import { Row } from 'reactstrap';
 import Container from '@material-ui/core/Container';
 import { RippleSpinner, convertToOmdbApiURL, OmdbApiTypeList } from '../..';
 import { DisplayResult } from './displayResult';
 import { SearchPage } from './searchPage';
+
+const StyledRow = styled(Row)`
+  justify-content: center;
+`;
 
 export enum SearchInputType {
   title = 'title',
@@ -92,7 +98,11 @@ export const OmdbDemo = () => {
           handlePaginationClick={handlePaginationClick}
         />);
     } else {
-      return <RippleSpinner />;
+      return <StyledRow>
+        <div>
+          <RippleSpinner />
+        </div>
+      </StyledRow>;
     }
   }
 

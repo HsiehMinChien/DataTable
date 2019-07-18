@@ -56,8 +56,8 @@ const App = () => {
   return (
     <>
       <BarPagination color="primary" page={value} onChangeCallback={handleChange}>
-        <LinkTab label="Data One" href="/" />
-        <LinkTab label="To be implemented" href="/1" />
+        <LinkTab label="Data List demo" href="/" />
+        <LinkTab label="Omdb api demo" href="/1" />
         <LinkTab label="To be implemented 2" href="/2" />
       </BarPagination>
       {value === 0 && <TabContainer>
