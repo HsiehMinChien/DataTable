@@ -1,17 +1,17 @@
 import React from 'react';
 import _ from 'lodash';
 import Container from '@material-ui/core/Container';
-import { Button, Label, Input } from 'reactstrap';
-import { RippleSpinner, convertToOmdbApiURL, CustomzieInput, OmdbApiType, OmdbApiTypeList } from '../..';
-import { DisplayResult } from './displayResult'
+import { RippleSpinner, convertToOmdbApiURL, OmdbApiTypeList } from '../..';
+import { DisplayResult } from './displayResult';
+import { SearchPage } from './searchPage';
 
-enum InputType {
+export enum SearchInputType {
   title = 'title',
   year = 'year',
   type = 'type'
 }
 
-type InputTypeList = keyof typeof InputType;
+export type SearchInputTypeList = keyof typeof SearchInputType;
 
 export const OmdbDemo = () => {
   const titleRef = React.useRef(null);
@@ -51,15 +51,15 @@ export const OmdbDemo = () => {
       });
   }
 
-  const handleOnChange = (e: any, t: InputTypeList) => {
+  const handleOnChange = (e: any, t: SearchInputTypeList) => {
     switch (t) {
-      case InputType.title:
+      case SearchInputType.title:
         setTitle(e.target.value);
         break;
-      case InputType.year:
+      case SearchInputType.year:
         setYear(e.target.value);
         break;
-      case InputType.type:
+      case SearchInputType.type:
         setSelect(e.target.value);
         break;
       default:
@@ -69,42 +69,18 @@ export const OmdbDemo = () => {
 
   const renderContent = () => {
     if (!isTrigger && isLoaded) {
-      return <>
-        <CustomzieInput
-          isValid={false}
-          title={'Title'}
-          placeholder={''}
-          refs={titleRef}
-          onBlur={() => { }}
-          onChange={e => handleOnChange(e, InputType.title)}
-          warningString={''}
-          value={title}
-        />
-        <CustomzieInput
-          isValid={false}
-          title={'Year'}
-          placeholder={''}
-          refs={yearRef}
-          onBlur={() => { }}
-          onChange={e => handleOnChange(e, InputType.year)}
-          warningString={''}
-          value={year}
-        />
-        <Label for="select">Type</Label>
-        <Input type="select" name="select" id="select" onChange={e => handleOnChange(e, InputType.type)} value={select}>
-          <option>{OmdbApiType.movie}</option>
-          <option>{OmdbApiType.episode}</option>
-          <option>{OmdbApiType.series}</option>
-        </Input>
-        <br />
-        <Button
-          color="primary"
-          onClick={() => {
-            setIsLoaded(false);
-            setIsTrigger(true);
-            handleClick();
-          }}>Fetch</Button>
-      </>;
+      return (
+        <SearchPage
+          year={year}
+          title={title}
+          select={select}
+          titleRef={titleRef}
+          yearRef={yearRef}
+          handleOnChange={handleOnChange}
+          setIsLoaded={setIsLoaded}
+          setIsTrigger={setIsTrigger}
+          handleClick={handleClick}
+        />)
     } else if (isTrigger && isLoaded) {
       return (
         <DisplayResult
