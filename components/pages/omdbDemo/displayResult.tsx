@@ -9,7 +9,7 @@ import {
   PaginationItem,
   PaginationLink,
 } from 'reactstrap';
-import { ItemPagination } from '../..';
+import { ItemPagination, getValue } from '../..';
 
 const StyledFlex = styled.div`
   display: flex | inline-flex;
@@ -79,14 +79,14 @@ export const DisplayResult = ({
   const convertDataToDisplay = () => {
     if (
       !_.isNil(data) &&
-      (_.get(data, 'Response', null) === 'False' || !_.isNil(_.get(data, 'Error', null)))
+      (getValue(data, 'Response', null) === 'False' || !_.isNil(getValue(data, 'Error', null)))
     ) {
       return <StyledH1>Oops, something went wrong!</StyledH1>
     } else if (
       !_.isNil(data) &&
-      _.get(data, 'Response', null) === 'True' &&
-      _.isNil(_.get(data, 'Error', null)) &&
-      _.isArray(_.get(data, 'Search', null))
+      getValue(data, 'Response', null) === 'True' &&
+      _.isNil(getValue(data, 'Error', null)) &&
+      _.isArray(getValue(data, 'Search', null))
     ) {
       return data.Search.map((item: any, i: number) => (
         <StyledFlex key={`${item}${i}`} onClick={() => setShowDetail(item)}>

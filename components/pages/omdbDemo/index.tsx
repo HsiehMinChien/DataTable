@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import _ from 'lodash';
+import styled from 'styled-components';
 import { Row } from 'reactstrap';
 import Container from '@material-ui/core/Container';
-import { RippleSpinner, convertToOmdbApiURL, OmdbApiTypeList } from '../..';
+import { RippleSpinner, convertToOmdbApiURL, OmdbApiTypeList, getValue } from '../..';
 import { DisplayResult } from './displayResult';
 import { SearchPage } from './searchPage';
 
@@ -33,7 +33,7 @@ export const OmdbDemo = () => {
   const [showDetail, setShowDetail] = React.useState<any>(null);
 
   const [currentPage, setCurrentPage] = React.useState(1);
-  const totalPages = _.isArray(_.get(data, 'Search', null)) ? Math.floor(data.Search.length / 12) + 1 : 0;
+  const totalPages = _.isArray(getValue(data, 'Search', null)) ? Math.floor(data.Search.length / 12) + 1 : 0;
 
   const handlePaginationClick = (i: number) => {
     setCurrentPage(i);

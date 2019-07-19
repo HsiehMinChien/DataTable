@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import _ from 'lodash';
+import styled from 'styled-components';
+import classnames from 'classnames';
 import { Input, Row, Col } from 'reactstrap';
 import { CustomzieInput, OmdbApiType, SearchInputType } from '../..';
 
@@ -67,7 +68,7 @@ export const SearchPage = ({
     <>
       <StyledH1>Let's find out...</StyledH1>
       <Row>
-        <StyleCol className="title" xs={4}>
+        <StyleCol className={classnames('title')} xs={4}>
           <CustomzieInput
             isValid={false}
             title={'Title'}
@@ -91,7 +92,7 @@ export const SearchPage = ({
             value={year}
           />
         </StyleCol>
-        <StyleCol className="type" xs={3}>
+        <StyleCol className={classnames('type')} xs={3}>
           <Input
             type="select"
             name="select"
@@ -102,9 +103,9 @@ export const SearchPage = ({
             <option>{OmdbApiType.series}</option>
           </Input>
         </StyleCol>
-        <StyleCol className="type" xs={1}>
+        <StyleCol className={classnames('type')} xs={1}>
           <StyledIcon
-            className="fas fa-search"
+            className={classnames('fas', 'fa-search')}
             onClick={() => {
               setIsLoaded(false);
               setIsTrigger(true);
