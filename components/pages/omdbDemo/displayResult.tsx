@@ -95,7 +95,7 @@ export const DisplayResult = ({
             <StyledRow>{item.Title}</StyledRow>
           </div>
         </StyledFlex>
-      )).filter((item: any, i: number) => (Math.floor(i / 12) + 1) === currentPage)
+      )).filter((_: any, i: number) => (Math.floor(i / 12) + 1) === currentPage)
     }
     return <div> unexpect status !</div>
   }

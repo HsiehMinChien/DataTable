@@ -52,7 +52,7 @@ export const OmdbDemo = () => {
           setIsLoaded(true);
         }
       )
-      .catch((err) => {
+      .catch(() => {
         setIsLoaded(true);
       });
   }
